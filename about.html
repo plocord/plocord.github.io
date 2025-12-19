@@ -9,6 +9,8 @@
   <!-- Icon library (Font Awesome) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Global styles (variables, reset) -->
+  <link rel="stylesheet" href="css/global.css">
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -80,17 +82,17 @@
         </div>
 
         <aside aria-label="Profile & contact" class="profile-aside">
-          <div style="text-align:center">
-            <img src="images/profile-placeholder.svg" alt="Profile photo placeholder" class="profile-photo" style="width:140px;height:140px;margin-bottom:0.75rem">
-            <p style="margin:0.25rem 0"><strong>Your Name</strong></p>
-            <p style="margin:0;color:rgba(0,0,0,0.6)">Information Systems student</p>
-          </div>
+            <div class="profile-block">
+              <img src="images/profile-placeholder.svg" alt="Profile photo placeholder" class="profile-photo profile-avatar">
+              <p class="profile-name"><strong>Your Name</strong></p>
+              <p class="profile-role">Information Systems student</p>
+            </div>
 
-          <div style="margin-top:1rem">
-            <p style="margin:0 0 0.5rem 0"><strong>Contact</strong></p>
-            <p style="margin:0"><a href="mailto:you@example.com">you@example.com</a></p>
-            <p style="margin:0"><a href="https://github.com/plocord" target="_blank" rel="noopener noreferrer">github.com/plocord</a></p>
-          </div>
+            <div class="profile-contact">
+              <p class="contact-heading"><strong>Contact</strong></p>
+              <p class="contact-item"><a href="mailto:you@example.com">you@example.com</a></p>
+              <p class="contact-item"><a href="https://github.com/plocord" target="_blank" rel="noopener noreferrer">github.com/plocord</a></p>
+            </div>
         </aside>
       </div>
     </section>

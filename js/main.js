@@ -3,6 +3,29 @@
 document.addEventListener('DOMContentLoaded', function(){
   console.log('Portfolio main.js loaded');
 
+  // Fill dynamic year in any element with id="year" (keeps pages DRY)
+  (function fillYear(){
+    var el = document.getElementById('year');
+    if(el) el.textContent = new Date().getFullYear();
+  })();
+
+  // Mark current nav link for accessibility (aria-current)
+  (function markCurrentNav(){
+    try{
+      var path = window.location.pathname.split('/').pop() || 'index.html';
+      var nav = document.getElementById('primary-menu');
+      if(!nav) return;
+      var links = nav.querySelectorAll('a');
+      links.forEach(function(a){
+        // Compare href filename (simple, works for this static site)
+        var href = a.getAttribute('href') || '';
+        if(href === path || (href === 'index.html' && path === '')){
+          a.setAttribute('aria-current','page');
+        }
+      });
+    }catch(e){/* noop */}
+  })();
+
   /*
     Mobile navigation helper:
     - When a navigation link is clicked on small screens, close the checkbox-based hamburger menu.

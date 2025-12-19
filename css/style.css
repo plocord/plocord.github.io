@@ -1,9 +1,6 @@
-/* Import shared global variables and base styles (global.css) */
-@import url("global.css");
-
 /* Main stylesheet for the portfolio site (page-level and component styles) */
 
-/* NOTE: global variables are defined in global.css. This stylesheet adds components and page-specific rules. */
+/* NOTE: global variables are defined in css/global.css which should be linked before this file in each HTML head. */
 
 html,body{height:100%;}
 body{
@@ -193,6 +190,14 @@ a{color:var(--accent)}
 
 .hero-image{width:220px;flex:0 0 220px;display:flex;align-items:center;justify-content:center}
 .profile-photo{width:160px;height:160px;border-radius:8px;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 20px rgba(16,24,40,0.08);background:#f4f7fb}
+
+/* Profile aside (moved from inline styles in about.html) */
+.profile-aside .profile-avatar{width:140px;height:140px;margin-bottom:0.75rem;border-radius:8px}
+.profile-aside .profile-name{margin:0.25rem 0;font-weight:700}
+.profile-aside .profile-role{margin:0;color:rgba(0,0,0,0.6)}
+.profile-aside .profile-contact{margin-top:1rem}
+.profile-aside .contact-heading{margin:0 0 0.5rem 0}
+.profile-aside .contact-item{margin:0}
 
 /* Hero responsive adjustments
    - Mobile (<=599px): stack, smaller image

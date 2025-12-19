@@ -11,6 +11,8 @@
   <!-- Include this CDN link to enable the <i class="fa"> icons used in the footer -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Global styles (variables, reset) -->
+  <link rel="stylesheet" href="css/global.css">
   <!-- Main stylesheet (relative path) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -77,17 +79,5 @@
 
   <!-- Main JS (deferred loading) -->
   <script defer src="js/main.js"></script>
-  <script>
-    /* Small runtime helpers: update year and provide a hook for page scripts */
-    (function(){
-      var y = new Date().getFullYear();
-      var el = document.getElementById('year');
-      if(el) el.textContent = y;
-      // window.__pageReady can be used by page-specific scripts to run after base layout loads
-      window.__pageReady = window.__pageReady || function(cb){
-        if(typeof cb === 'function') cb();
-      };
-    })();
-  </script>
 </body>
 </html>

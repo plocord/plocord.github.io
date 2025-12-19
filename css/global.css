@@ -82,3 +82,6 @@ h2{font-size:1.25rem}
   body{background:#fff;color:#000}
   a::after{content: " (" attr(href) ")"}
 }
+
+/* Visible skip-link when focused (accessibility) */
+.skip-link:focus{position:static;left:auto;top:auto;width:auto;height:auto;overflow:visible;padding:0.5rem 0.75rem;background:var(--accent);color:#fff;border-radius:4px;z-index:100}
