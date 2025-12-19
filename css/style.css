@@ -68,8 +68,38 @@ a{color:var(--accent)}
 .nav-toggle-label .hamburger::before{ top:-7px; }
 .nav-toggle-label .hamburger::after{ top:7px; }
 
-/* Mobile behavior */
-@media (max-width: 700px){
+/* Responsive navigation behavior
+   Breakpoints:
+   - Mobile: up to 599px (stacked layout, full-width menu)
+   - Tablet: 600px–899px (compact header, hamburger still available)
+   - Desktop: 900px and up (full horizontal nav)
+*/
+
+/* Mobile (up to 599px): full-width stacked header, hamburger toggles a full-width menu */
+@media (max-width: 599px){
+  .nav-toggle-label{ display:flex; }
+  .site-branding{flex:1}
+  .nav-list{
+    position:absolute;
+    left:0;
+    right:0;
+    top:56px;
+    background:var(--bg);
+    flex-direction:column;
+    gap:0;
+    padding:0.5rem 0.75rem;
+    border-top:1px solid rgba(0,0,0,0.04);
+    display:none; /* hidden by default, shown when checkbox checked */
+    min-width:100%;
+    z-index:100;
+  }
+  .nav-list li{ padding:0.35rem 0.5rem; }
+  .nav-toggle:checked ~ .nav-list{ display:flex; }
+  .site-branding .site-tagline{ display:none; }
+}
+
+/* Tablet (600px - 899px): compact header layout, keep hamburger for space savings */
+@media (min-width:600px) and (max-width:899px){
   .nav-toggle-label{ display:flex; }
   .nav-list{
     position:absolute;
@@ -77,19 +107,23 @@ a{color:var(--accent)}
     right:1rem;
     background:var(--bg);
     flex-direction:column;
-    gap:0;
     padding:0.5rem 1rem;
     border:1px solid rgba(0,0,0,0.06);
-    box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    display:none; /* hidden by default, shown when checkbox checked */
-    min-width:180px;
+    box-shadow:var(--shadow-sm);
+    display:none;
+    min-width:220px;
     z-index:100;
   }
-  .nav-list li{ padding:0.25rem 0; }
-  /* Show when checked */
   .nav-toggle:checked ~ .nav-list{ display:flex; }
-  /* Make branding more compact */
   .site-branding .site-tagline{ display:none; }
+}
+
+/* Desktop (900px and up): show full horizontal nav and hide hamburger */
+@media (min-width:900px){
+  .nav-toggle-label{ display:none; }
+  .nav-list{ display:flex !important; position:static; background:transparent; box-shadow:none; padding:0 }
+  .nav-list li{ padding:0 }
+  .site-branding .site-tagline{ display:block }
 }
 
 /* Footer styles */
@@ -160,17 +194,35 @@ a{color:var(--accent)}
 .hero-image{width:220px;flex:0 0 220px;display:flex;align-items:center;justify-content:center}
 .profile-photo{width:160px;height:160px;border-radius:8px;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 20px rgba(16,24,40,0.08);background:#f4f7fb}
 
-@media (max-width:800px){
+/* Hero responsive adjustments
+   - Mobile (<=599px): stack, smaller image
+   - Tablet (600–899px): stacked but with larger title
+   - Desktop (900px+): side-by-side layout
+*/
+@media (max-width:599px){
   .hero-inner{flex-direction:column-reverse;align-items:flex-start}
   .hero-image{width:100%;flex:0 0 auto;margin-bottom:0.75rem}
-  .profile-photo{width:120px;height:120px}
+  .profile-photo{width:100px;height:100px}
+  .hero-title{font-size:1.4rem}
+}
+
+@media (min-width:600px) and (max-width:899px){
+  .hero-inner{flex-direction:column-reverse;align-items:flex-start}
+  .hero-image{width:100%;flex:0 0 auto;margin-bottom:1rem}
+  .profile-photo{width:140px;height:140px}
   .hero-title{font-size:1.6rem}
+}
+
+@media (min-width:900px){
+  .hero-inner{flex-direction:row;align-items:center}
+  .profile-photo{width:160px;height:160px}
+  .hero-title{font-size:2rem}
 }
 
 /* Projects grid */
 .projects-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
   gap:1.25rem;
   margin-top:1rem;
 }
@@ -183,7 +235,7 @@ a{color:var(--accent)}
   flex-direction:column;
   box-shadow:0 6px 18px rgba(16,24,40,0.04);
 }
-.project-media img{width:100%;height:auto;display:block}
+.project-media img{width:100%;height:200px;object-fit:cover;display:block}
 .project-body{padding:1rem}
 .project-title{margin:0 0 0.5rem 0;font-size:1.125rem}
 .project-desc{margin:0 0 0.75rem 0;color:rgba(0,0,0,0.7)}
@@ -192,6 +244,7 @@ a{color:var(--accent)}
 
 @media (max-width:600px){
   .project-body{padding:0.75rem}
+  .project-media img{height:140px}
 }
 
 
