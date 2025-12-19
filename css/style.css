@@ -1,10 +1,9 @@
-/* Main stylesheet for the portfolio site */
+/* Import shared global variables and base styles (global.css) */
+@import url("global.css");
 
-:root {
-  --bg: #ffffff;
-  --text: #222222;
-  --accent: #0066cc;
-}
+/* Main stylesheet for the portfolio site (page-level and component styles) */
+
+/* NOTE: global variables are defined in global.css. This stylesheet adds components and page-specific rules. */
 
 html,body{height:100%;}
 body{

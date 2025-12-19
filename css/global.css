@@ -1,0 +1,84 @@
+/* global.css — shared site-wide variables and base styles
+
+Design goals:
+- Modern, minimal, neutral color palette.
+- Readable typography with sensible line-height and spacing.
+- CSS variables for colors/spacing to keep the theme consistent.
+- Lightweight reset and accessible focus styles.
+*/
+
+:root{
+  /* Colors */
+  --bg: #ffffff;
+  --surface: #fbfdff;
+  --muted: #f4f7fb;
+  --text: #111827; /* near-black for good contrast */
+  --muted-text: #6b7280;
+  --accent: #0b6fb2; /* primary accent */
+  --accent-weak: #dff0fb;
+
+  /* Spacing */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+
+  /* Radius & shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
+
+  /* Typographic scale */
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --lead-size: 1.05rem;
+}
+
+/* Basic reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+
+/* Links */
+a{color:var(--accent)}
+a:hover,a:focus{opacity:0.92}
+
+/* Headings */
+h1,h2,h3{color:var(--text);line-height:1.15;margin:0 0 var(--space-sm) 0}
+h1{font-size:clamp(1.6rem, 2.6vw, 2.25rem)}
+h2{font-size:1.25rem}
+
+/* Utility container */
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 var(--space-md)}
+
+/* Lead paragraph */
+.lead{font-size:var(--lead-size);color:var(--muted-text);margin-top:0}
+
+/* Buttons - neutral and primary */
+.btn{display:inline-block;padding:0.5rem 0.85rem;border-radius:var(--radius-sm);text-decoration:none;font-weight:600}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(0,0,0,0.06)}
+
+/* Focus styles for accessibility */
+:focus{outline:2px solid var(--accent);outline-offset:3px}
+
+/* Small helpers */
+.sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Responsive image placeholder class */
+.img-frame{background:var(--muted);border-radius:var(--radius-md);overflow:hidden}
+
+/* Simple grid helper (1..n columns) */
+.grid{display:grid;gap:var(--space-md)}
+
+/* Small utility helpers */
+.flex{display:flex}
+.center{align-items:center;justify-content:center}
+
+/* Print-friendly base (minimal) */
+@media print{
+  body{background:#fff;color:#000}
+  a::after{content: " (" attr(href) ")"}
+}
