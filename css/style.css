@@ -93,3 +93,33 @@ a{color:var(--accent)}
   .site-branding .site-tagline{ display:none; }
 }
 
+/* Footer styles */
+.site-footer{
+  border-top:1px solid rgba(0,0,0,0.06);
+  padding:1rem 0.75rem;
+  margin-top:2rem;
+  background:transparent;
+}
+.site-footer .footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  max-width:1200px;
+  margin:0 auto;
+}
+.site-footer .footer-left,
+.site-footer .footer-center,
+.site-footer .footer-right{display:flex;align-items:center;gap:0.5rem}
+.site-footer .copyright{margin:0;color:rgba(0,0,0,0.65)}
+.footer-social a{display:inline-flex;align-items:center;justify-content:center;padding:0.25rem;color:var(--text);text-decoration:none}
+.footer-social a i{font-size:1.25rem}
+.footer-social a:hover{color:var(--accent)}
+.repo-link{color:var(--text);text-decoration:underline;text-decoration-thickness:1px}
+.repo-link:hover{color:var(--accent)}
+
+@media (max-width:700px){
+  .site-footer .footer-inner{flex-direction:column;align-items:flex-start}
+  .site-footer .footer-right{margin-top:0.5rem}
+}
+
