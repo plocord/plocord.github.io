@@ -83,8 +83,11 @@ document.addEventListener('DOMContentLoaded', function(){
     - Uses native scroll behavior when available.
   */
   (function enableSmoothScrolling(){
-    // Feature detect scroll behavior support
-    var supportsSmooth = 'scrollBehavior' in document.documentElement.style;
+    // Prefer CSS native smooth scrolling. If the browser supports the
+    // CSS 'scroll-behavior' property, let CSS handle in-page anchor
+    // navigation and avoid intercepting clicks. Otherwise fall back to
+    // a small JS handler that performs smooth scroll behavior.
+    if('scrollBehavior' in document.documentElement.style) return;
 
     // Attach handler to the document for delegated clicks on anchor links
     document.addEventListener('click', function(e){
@@ -99,15 +102,10 @@ document.addEventListener('DOMContentLoaded', function(){
       var target = document.getElementById(id);
       if(!target) return; // no element to scroll to
 
-      // Prevent default jump and smooth-scroll instead
+      // Prevent default jump and smooth-scroll instead (fallback)
       e.preventDefault();
       var top = target.getBoundingClientRect().top + window.pageYOffset - 8; // slight offset
-
-      if(supportsSmooth){
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      } else {
-        window.scrollTo(0, top);
-      }
+      window.scrollTo({ top: top });
       // Update location.hash without jumping
       history.replaceState(null, '', '#' + id);
     });

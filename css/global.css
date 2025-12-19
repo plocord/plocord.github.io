@@ -114,3 +114,11 @@ a, .btn, button, .nav-list a {
 @media (prefers-reduced-motion: reduce){
   .nav-list, .nav-list a::after, .btn, .profile-photo, .project-card { transition: none !important; transform: none !important; }
 }
+
+/* Native smooth scrolling (CSS-first, simple & safe) */
+html{scroll-behavior:smooth}
+
+@media (prefers-reduced-motion: reduce){
+  /* Respect reduced-motion: disable CSS smooth scroll when requested */
+  html{scroll-behavior:auto}
+}
