@@ -122,3 +122,15 @@ html{scroll-behavior:smooth}
   /* Respect reduced-motion: disable CSS smooth scroll when requested */
   html{scroll-behavior:auto}
 }
+
+/* Navigation-specific focus handling
+   - Hide the default outline for mouse users but keep a visible focus ring for
+     keyboard users. Uses :focus-visible where supported and falls back to a
+     `user-is-tabbing` class added by JavaScript.
+*/
+.nav-list a:focus{ outline: none; }
+.nav-list a:focus-visible, .user-is-tabbing .nav-list a:focus{
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius:6px;
+}

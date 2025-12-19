@@ -30,6 +30,34 @@
     }
   }catch(e){/* noop — fail silently */}
 })();
+// Manage keyboard vs pointer focus visibility for accessibility
+// - Adds/removes `user-is-tabbing` on <html> so CSS can show focus styles
+//   only for keyboard users (fallback for browsers without :focus-visible).
+(function manageKeyboardFocus(){
+  try{
+    var docEl = document.documentElement;
+    var handleFirstTab = function(e){
+      if(e.key === 'Tab' || e.keyCode === 9){
+        docEl.classList.add('user-is-tabbing');
+        window.removeEventListener('keydown', handleFirstTab);
+        window.addEventListener('mousedown', handleMouseDown);
+        window.addEventListener('pointerdown', handleMouseDown);
+        window.addEventListener('touchstart', handleMouseDown);
+      }
+    };
+    var handleMouseDown = function(){
+      docEl.classList.remove('user-is-tabbing');
+      // revert to listening for Tab again
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('pointerdown', handleMouseDown);
+      window.removeEventListener('touchstart', handleMouseDown);
+      window.addEventListener('keydown', handleFirstTab);
+    };
+
+    // Start listening for keyboard usage
+    window.addEventListener('keydown', handleFirstTab);
+  }catch(e){/* noop */}
+})();
 document.addEventListener('DOMContentLoaded', function(){
   console.log('Portfolio main.js loaded');
 
