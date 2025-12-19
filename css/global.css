@@ -33,6 +33,10 @@ Design goals:
   /* Typographic scale */
   --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   --lead-size: 1.05rem;
+  /* Motion */
+  --transition-fast: 120ms;
+  --transition: 200ms;
+  --easing: cubic-bezier(.2,.8,.2,1);
 }
 
 /* Basic reset */
@@ -85,3 +89,11 @@ h2{font-size:1.25rem}
 
 /* Visible skip-link when focused (accessibility) */
 .skip-link:focus{position:static;left:auto;top:auto;width:auto;height:auto;overflow:visible;padding:0.5rem 0.75rem;background:var(--accent);color:#fff;border-radius:4px;z-index:100}
+
+/* Subtle global transitions for interactive elements */
+a, .btn, button, .nav-list a {
+  transition: color var(--transition) var(--easing), background-color var(--transition) var(--easing), box-shadow var(--transition) var(--easing), transform var(--transition) var(--easing);
+}
+
+/* Soft elevation helper (used by cards/buttons on hover) */
+.soft-elevate{box-shadow:var(--shadow-sm);transition:box-shadow var(--transition) var(--easing),transform var(--transition) var(--easing)}
