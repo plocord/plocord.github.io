@@ -1,5 +1,35 @@
 // Main JavaScript entry for the portfolio site
 // Small, well-commented helpers: mobile nav behavior and optional smooth scrolling.
+// Page fade-in (very small, accessible):
+// - Add a 'js' class to <html> so CSS-only fallback remains visible for no-JS users.
+// - Add 'is-rendered' to <body> once DOM is ready (or immediately if already ready) to trigger the CSS opacity transition.
+(function enablePageFadeIn(){
+  try{
+    // Mark that JS is present (so default is visible if JS is absent)
+    document.documentElement.classList.add('js');
+
+    // If user prefers reduced motion, skip animations: show immediately
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function showNow(){
+      if(!document.body) return requestAnimationFrame(showNow);
+      document.body.classList.add('is-rendered');
+    }
+
+    if(prefersReduced){
+      // No transition — set visible immediately
+      if(document.body) document.body.classList.add('is-rendered');
+      else document.addEventListener('DOMContentLoaded', function(){ document.body.classList.add('is-rendered'); });
+      return;
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', showNow);
+    } else {
+      // DOM already ready — run on next frame so CSS has time to apply
+      requestAnimationFrame(showNow);
+    }
+  }catch(e){/* noop — fail silently */}
+})();
 document.addEventListener('DOMContentLoaded', function(){
   console.log('Portfolio main.js loaded');
 

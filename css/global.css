@@ -97,3 +97,15 @@ a, .btn, button, .nav-list a {
 
 /* Soft elevation helper (used by cards/buttons on hover) */
 .soft-elevate{box-shadow:var(--shadow-sm);transition:box-shadow var(--transition) var(--easing),transform var(--transition) var(--easing)}
+
+/* Page load fade-in (accessible)
+   - The effect only applies when JS is available: the script adds `js` to <html> and `is-rendered` to <body`.
+   - Without JS the body remains normal (no hiding).
+   - Respects prefers-reduced-motion.
+*/
+.js body{opacity:0;transition:opacity var(--transition-fast) var(--easing)}
+.js body.is-rendered{opacity:1}
+
+@media (prefers-reduced-motion: reduce){
+  .js body{transition:none;opacity:1}
+}
