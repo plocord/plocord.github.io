@@ -3,6 +3,7 @@
 /* NOTE: global variables are defined in css/global.css which should be linked before this file in each HTML head. */
 
 html,body{height:100%;}
+/* Page shell: use flexbox so footer can stick to bottom when content is short */
 body{
   margin:0;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -10,8 +11,13 @@ body{
   color:var(--text);
   line-height:1.4;
   padding:1rem;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh; /* ensure body covers viewport height */
 }
 
+/* keep header visible and consistent height */
+header{flex:0 0 auto}
 nav{margin-bottom:1rem}
 a{color:var(--accent)}
 
@@ -21,6 +27,9 @@ a{color:var(--accent)}
   align-items:center;
   gap:1rem;
   position:relative;
+  /* stable height so pages don't jump when content height varies */
+  min-height:56px;
+  padding:0.5rem 0;
 }
 .site-branding{flex:1}
 .site-title{font-weight:600; text-decoration:none; color:var(--text)}
@@ -190,6 +199,9 @@ a{color:var(--accent)}
   margin:0 auto;
   padding:0 1rem;
 }
+
+/* Make the main content area flexible so footer sits at bottom on short pages */
+main[role="main"], main#main{ flex:1 0 auto }
 
 /* Buttons */
 .btn{
