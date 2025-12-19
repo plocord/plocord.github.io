@@ -18,3 +18,78 @@ body{
 
 nav{margin-bottom:1rem}
 a{color:var(--accent)}
+
+/* Responsive navigation (no-JS hamburger) */
+.primary-nav{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  position:relative;
+}
+.site-branding{flex:1}
+.site-title{font-weight:600; text-decoration:none; color:var(--text)}
+.site-tagline{margin:0; font-size:0.9rem; color:rgba(0,0,0,0.6)}
+.nav-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:1rem;
+  align-items:center;
+}
+.nav-list a{ text-decoration:none; color:var(--text); padding:0.25rem 0.5rem;}
+.nav-list a:hover{ color:var(--accent)}
+
+/* Hamburger toggle (checkbox) */
+.nav-toggle{ display:none; }
+.nav-toggle-label{
+  display:none;
+  width:40px;
+  height:32px;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+.nav-toggle-label .hamburger{
+  display:block;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  position:relative;
+}
+.nav-toggle-label .hamburger::before,
+.nav-toggle-label .hamburger::after{
+  content:'';
+  position:absolute;
+  left:0;
+  width:22px;
+  height:2px;
+  background:var(--text);
+}
+.nav-toggle-label .hamburger::before{ top:-7px; }
+.nav-toggle-label .hamburger::after{ top:7px; }
+
+/* Mobile behavior */
+@media (max-width: 700px){
+  .nav-toggle-label{ display:flex; }
+  .nav-list{
+    position:absolute;
+    top:64px;
+    right:1rem;
+    background:var(--bg);
+    flex-direction:column;
+    gap:0;
+    padding:0.5rem 1rem;
+    border:1px solid rgba(0,0,0,0.06);
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    display:none; /* hidden by default, shown when checkbox checked */
+    min-width:180px;
+    z-index:100;
+  }
+  .nav-list li{ padding:0.25rem 0; }
+  /* Show when checked */
+  .nav-toggle:checked ~ .nav-list{ display:flex; }
+  /* Make branding more compact */
+  .site-branding .site-tagline{ display:none; }
+}
+

@@ -19,12 +19,24 @@
       <a href="index.html" class="site-title">Your Name</a>
       <p class="site-tagline">Short tagline or role</p>
     </div>
-    <nav aria-label="Primary navigation">
-      <ul class="nav-list">
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <!-- CSS-only hamburger using the "checkbox hack" so no JS is required -->
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span class="hamburger" aria-hidden="true"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </label>
+
+      <div class="site-branding">
+        <a href="index.html" class="site-title">Your Name</a>
+        <p class="site-tagline">Short tagline or role</p>
+      </div>
+
+      <ul id="primary-menu" class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
       </ul>
     </nav>
   </header>
