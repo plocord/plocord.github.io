@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Replace the content text below with a short page description -->
+  <meta name="description" content="Your short page description here">
+  <title><!-- PAGE_TITLE: replace with page title --></title>
+
+  <!-- Main stylesheet (relative path) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Accessibility: skip link -->
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+  <header>
+    <div class="site-branding">
+      <a href="index.html" class="site-title">Your Name</a>
+      <p class="site-tagline">Short tagline or role</p>
+    </div>
+    <nav aria-label="Primary navigation">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+    <!-- PAGE_CONTENT: Replace this block with page-specific markup -->
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Your Name — <a href="mailto:you@example.com">you@example.com</a></p>
+  </footer>
+
+  <!-- Main JS (deferred loading) -->
+  <script defer src="js/main.js"></script>
+  <script>
+    /* Small runtime helpers: update year and provide a hook for page scripts */
+    (function(){
+      var y = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if(el) el.textContent = y;
+      // window.__pageReady can be used by page-specific scripts to run after base layout loads
+      window.__pageReady = window.__pageReady || function(cb){
+        if(typeof cb === 'function') cb();
+      };
+    })();
+  </script>
+</body>
+</html>
