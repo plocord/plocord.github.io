@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Resume — Your Name. Academic background, experience, and skills.">
+  <title>Resume - Your Name</title>
+
+  <!-- Icon library (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+  <header>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span class="hamburger" aria-hidden="true"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </label>
+
+      <div class="site-branding">
+        <a href="index.html" class="site-title">Your Name</a>
+        <p class="site-tagline">Short tagline or role</p>
+      </div>
+
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" role="main" class="container">
+    <header class="section-header">
+      <h1>Resume</h1>
+      <p class="lead">A concise professional summary and overview of academic background, skills, and experience. Replace placeholders with your real content.</p>
+    </header>
+
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Professional summary</h2>
+      <p>Information Systems student with experience in small-scale web projects, system administration basics, and collaborative coursework. Seeking internship or junior roles to apply and grow technical skills.</p>
+    </section>
+
+    <section aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      <ul>
+        <li>
+          <strong>University Name</strong> — B.Sc. Information Systems
+          <br>
+          Expected graduation: <em>Month Year</em>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+      <div>
+        <h3>Intern / Part-time Role — Organization</h3>
+        <p><em>Month Year — Month Year</em></p>
+        <ul>
+          <li>Supported maintenance of internal tools and documentation.</li>
+          <li>Assisted in data cleaning and small automation tasks using Python.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Student Projects &amp; Volunteering</h3>
+        <ul>
+          <li>Organized workshops for version control and basic web development.</li>
+          <li>Volunteer tutor for programming courses.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <ul>
+        <li>Programming: Python, JavaScript</li>
+        <li>Web: HTML, CSS, responsive design</li>
+        <li>Databases: SQL (MySQL / PostgreSQL)</li>
+        <li>Tools: Git, basic Linux, VS Code</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="links-heading">
+      <h2 id="links-heading">Links</h2>
+      <p><a href="https://github.com/plocord/plocord.github.io" target="_blank" rel="noopener noreferrer">Website source repository</a></p>
+      <p><a href="#" class="btn" aria-disabled="true">Download resume (PDF)</a> <small style="color:rgba(0,0,0,0.55)">(placeholder)</small></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="copyright">&copy; <span id="year"></span> Your Name</p>
+      </div>
+      <div class="footer-center">
+        <nav class="footer-social" aria-label="Social links">
+          <a href="https://github.com/plocord" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.codecademy.com/profiles/your-username" target="_blank" rel="noopener noreferrer" aria-label="Codecademy">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+          </a>
+        </nav>
+      </div>
+      <div class="footer-right">
+        <a class="repo-link" href="https://github.com/plocord/plocord.github.io" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+  <script>
+    (function(){
+      var y = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if(el) el.textContent = y;
+    })();
+  </script>
+</body>
+</html>
