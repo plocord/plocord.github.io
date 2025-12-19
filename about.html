@@ -2,18 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About — Your Name, Information Systems student. Academic background, skills, and experience.">
   <title>About - Your Name</title>
+
+  <!-- Icon library (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="projects.html">Projects</a> | <a href="contact.html">Contact</a>
-  </nav>
-  <main>
-    <h1>About</h1>
-    <p>Write a short bio here.</p>
+  <!-- Accessibility: skip link -->
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+  <header>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span class="hamburger" aria-hidden="true"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </label>
+
+      <div class="site-branding">
+        <a href="index.html" class="site-title">Your Name</a>
+        <p class="site-tagline">Short tagline or role</p>
+      </div>
+
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+    <section class="container">
+      <header class="section-header">
+        <h1>About me</h1>
+        <p class="lead">I am a student in <strong>Information Systems</strong> with interests in systems design, web development, and data management. Below is an overview of my academic background, skills, and activities.</p>
+      </header>
+
+      <div class="grid" style="display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:start">
+        <div>
+          <section aria-labelledby="academic-heading">
+            <h2 id="academic-heading">Academic background</h2>
+            <p>I am currently studying Information Systems at <strong>University Name</strong>. My coursework includes databases, networks, systems analysis, and software development. Expected graduation: <em>Month Year</em>.</p>
+            <ul>
+              <li>B.Sc. (Information Systems) — relevant modules: Databases, Operating Systems, Networking, Software Engineering</li>
+              <li>Academic achievements: Dean's List / scholarship (if applicable)</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Skills &amp; qualifications</h2>
+            <p>Practical skills I use regularly:</p>
+            <ul>
+              <li>Programming: Python, JavaScript (ES6+), SQL</li>
+              <li>Web: HTML5, CSS3, responsive design, basic accessibility</li>
+              <li>Databases &amp; tooling: MySQL/PostgreSQL, Git, basic Linux</li>
+              <li>Other: data analysis basics, system design concepts</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="activities-heading">
+            <h2 id="activities-heading">Activities &amp; experience</h2>
+            <p>I participate in activities that build practical experience outside of coursework:</p>
+            <ul>
+              <li>Student tech club — organizing workshops on web development and version control</li>
+              <li>Internship / part-time role — assisted in maintaining small internal tools and documentation</li>
+              <li>Volunteer tutor — helped peers with programming assignments and exam prep</li>
+              <li>Personal projects — small web apps and scripts; see <a href="projects.html">Projects</a> for examples</li>
+            </ul>
+          </section>
+        </div>
+
+        <aside aria-label="Profile & contact" class="profile-aside">
+          <div style="text-align:center">
+            <img src="images/profile-placeholder.svg" alt="Profile photo placeholder" class="profile-photo" style="width:140px;height:140px;margin-bottom:0.75rem">
+            <p style="margin:0.25rem 0"><strong>Your Name</strong></p>
+            <p style="margin:0;color:rgba(0,0,0,0.6)">Information Systems student</p>
+          </div>
+
+          <div style="margin-top:1rem">
+            <p style="margin:0 0 0.5rem 0"><strong>Contact</strong></p>
+            <p style="margin:0"><a href="mailto:you@example.com">you@example.com</a></p>
+            <p style="margin:0"><a href="https://github.com/plocord" target="_blank" rel="noopener noreferrer">github.com/plocord</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
-  <script src="js/main.js"></script>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="copyright">&copy; <span id="year"></span> Your Name</p>
+      </div>
+
+      <div class="footer-center">
+        <nav class="footer-social" aria-label="Social links">
+          <a href="https://github.com/plocord" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.codecademy.com/profiles/your-username" target="_blank" rel="noopener noreferrer" aria-label="Codecademy">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+          </a>
+        </nav>
+      </div>
+
+      <div class="footer-right">
+        <a class="repo-link" href="https://github.com/plocord/plocord.github.io" target="_blank" rel="noopener noreferrer">View source on GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JS (deferred) -->
+  <script defer src="js/main.js"></script>
+  <script>
+    (function(){
+      var y = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if(el) el.textContent = y;
+      window.__pageReady = window.__pageReady || function(cb){ if(typeof cb === 'function') cb(); };
+    })();
+  </script>
 </body>
 </html>
