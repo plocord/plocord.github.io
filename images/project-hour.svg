@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Hour of Code project placeholder">
+  <rect width="100%" height="100%" fill="#fff8eb"/>
+  <rect x="40" y="40" width="720" height="370" rx="8" fill="#f7e7c6"/>
+  <text x="400" y="230" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#b38b3a" text-anchor="middle">Hour of Code screenshot</text>
+</svg>

@@ -168,4 +168,32 @@ a{color:var(--accent)}
   .hero-title{font-size:1.6rem}
 }
 
+/* Projects grid */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:1.25rem;
+  margin-top:1rem;
+}
+.project-card{
+  background:linear-gradient(180deg, #ffffff, #fbfdff);
+  border:1px solid rgba(0,0,0,0.04);
+  border-radius:10px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 6px 18px rgba(16,24,40,0.04);
+}
+.project-media img{width:100%;height:auto;display:block}
+.project-body{padding:1rem}
+.project-title{margin:0 0 0.5rem 0;font-size:1.125rem}
+.project-desc{margin:0 0 0.75rem 0;color:rgba(0,0,0,0.7)}
+.project-links a{color:var(--accent);text-decoration:none}
+.project-links a:hover{text-decoration:underline}
+
+@media (max-width:600px){
+  .project-body{padding:0.75rem}
+}
+
+
 
