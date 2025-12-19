@@ -109,3 +109,8 @@ a, .btn, button, .nav-list a {
 @media (prefers-reduced-motion: reduce){
   .js body{transition:none;opacity:1}
 }
+
+/* Reduce motion: remove transitions on interactive elements when requested */
+@media (prefers-reduced-motion: reduce){
+  .nav-list, .nav-list a::after, .btn, .profile-photo, .project-card { transition: none !important; transform: none !important; }
+}

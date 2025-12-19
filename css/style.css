@@ -32,9 +32,29 @@ a{color:var(--accent)}
   display:flex;
   gap:1rem;
   align-items:center;
+  /* allow subtle open/close transitions on small screens via max-height */
+  transition: max-height var(--transition) var(--easing), opacity var(--transition) var(--easing), transform var(--transition) var(--easing);
 }
-.nav-list a{ text-decoration:none; color:var(--text); padding:0.25rem 0.5rem; transition:color var(--transition) var(--easing), transform var(--transition) var(--easing);}
+.nav-list a{ text-decoration:none; color:var(--text); padding:0.25rem 0.5rem; transition:color var(--transition) var(--easing), transform var(--transition) var(--easing); position:relative}
 .nav-list a:hover{ color:var(--accent); transform:translateY(-1px)}
+
+/* subtle underline using a scale transform on a pseudo-element */
+.nav-list a::after{
+  content:'';
+  position:absolute;
+  left:0; right:0; bottom:-3px;
+  height:2px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left center;
+  opacity:0.95;
+  transition: transform var(--transition) var(--easing), opacity var(--transition) var(--easing);
+}
+.nav-list a:hover::after, .nav-list a:focus::after{ transform:scaleX(1); opacity:1 }
+
+/* active page indicator (aria-current) */
+.nav-list a[aria-current="page"]{ color:var(--accent); font-weight:700 }
+.nav-list a[aria-current="page"]::after{ transform:scaleX(1); opacity:1 }
 
 /* Hamburger toggle (checkbox) */
 .nav-toggle{ display:none; }
@@ -86,12 +106,17 @@ a{color:var(--accent)}
     gap:0;
     padding:0.5rem 0.75rem;
     border-top:1px solid rgba(0,0,0,0.04);
-    display:none; /* hidden by default, shown when checkbox checked */
+    /* Collapsed by default: use max-height and opacity so it can animate */
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
     min-width:100%;
     z-index:100;
+    pointer-events:none;
+    transform:translateY(-6px);
   }
   .nav-list li{ padding:0.35rem 0.5rem; }
-  .nav-toggle:checked ~ .nav-list{ display:flex; }
+  .nav-toggle:checked ~ .nav-list{ max-height:420px; opacity:1; pointer-events:auto; transform:none }
   .site-branding .site-tagline{ display:none; }
 }
 
@@ -107,11 +132,16 @@ a{color:var(--accent)}
     padding:0.5rem 1rem;
     border:1px solid rgba(0,0,0,0.06);
     box-shadow:var(--shadow-sm);
-    display:none;
+    /* animate open/close with max-height */
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
     min-width:220px;
     z-index:100;
+    pointer-events:none;
+    transform:translateY(-6px);
   }
-  .nav-toggle:checked ~ .nav-list{ display:flex; }
+  .nav-toggle:checked ~ .nav-list{ max-height:420px; opacity:1; pointer-events:auto; transform:none }
   .site-branding .site-tagline{ display:none; }
 }
 
