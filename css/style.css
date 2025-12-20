@@ -6,7 +6,7 @@ html,body{height:100%;}
 /* Page shell: use flexbox so footer can stick to bottom when content is short */
 body{
   margin:0;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: var(--font-sans);
   background:var(--bg);
   color:var(--text);
   line-height:1.4;
@@ -237,6 +237,11 @@ main[role="main"], main#main{ flex:1 0 auto }
 .profile-photo{width:160px;height:160px;border-radius:18px;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 20px rgba(16,24,40,0.08);background:#f4f7fb;transition:transform var(--transition) var(--easing), box-shadow var(--transition) var(--easing)}
 
 .profile-photo:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(16,24,40,0.12)}
+
+/* About page: slightly larger corner radius for profile avatar */
+.profile-aside .profile-photo, .profile-aside .profile-avatar{
+  border-radius:28px;
+}
 
 /* Home page-specific type sizing for improved readability */
 .home .hero-content{ font-size:1.05rem }
