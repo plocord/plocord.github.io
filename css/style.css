@@ -234,9 +234,14 @@ main[role="main"], main#main{ flex:1 0 auto }
 .hero-cta{margin-top:0.5rem}
 
 .hero-image{width:220px;flex:0 0 220px;display:flex;align-items:center;justify-content:center}
-.profile-photo{width:160px;height:160px;border-radius:8px;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 20px rgba(16,24,40,0.08);background:#f4f7fb;transition:transform var(--transition) var(--easing), box-shadow var(--transition) var(--easing)}
+.profile-photo{width:160px;height:160px;border-radius:18px;object-fit:cover;border:4px solid #fff;box-shadow:0 6px 20px rgba(16,24,40,0.08);background:#f4f7fb;transition:transform var(--transition) var(--easing), box-shadow var(--transition) var(--easing)}
 
 .profile-photo:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(16,24,40,0.12)}
+
+/* Home page-specific type sizing for improved readability */
+.home .hero-content{ font-size:1.05rem }
+.home .hero-title{ font-size:2.25rem }
+.home .hero-subtitle{ font-size:1.125rem; max-width:54ch }
 
 /* Profile aside (moved from inline styles in about.html) */
 .profile-aside .profile-avatar{width:140px;height:140px;margin-bottom:0.75rem;border-radius:8px}
