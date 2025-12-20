@@ -7,6 +7,38 @@ Design goals:
 - Lightweight reset and accessible focus styles.
 */
 
+/* Local @font-face for Hack (self-hosting)
+   To enable Hack locally, download the WOFF2/WOFF files and place them in
+   the `fonts/` folder at the site root. Recommended filenames used below:
+     fonts/hack-regular.woff2
+     fonts/hack-bold.woff2
+     fonts/hack-regular.woff   (optional fallback)
+     fonts/hack-bold.woff      (optional fallback)
+
+   Example PowerShell (run from project root) to create the fonts folder:
+     mkdir .\fonts
+
+   After you place the font files, the rules below will load them. If the
+   files are missing the browser will fall back to system fonts defined in
+   --font-sans.
+*/
+@font-face{
+  font-family: 'Hack';
+  src: url('../fonts/hack-regular.woff2') format('woff2'),
+       url('../fonts/hack-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: 'Hack';
+  src: url('../fonts/hack-bold.woff2') format('woff2'),
+       url('../fonts/hack-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root{
   /* Colors */
   --bg: #ffffff;
@@ -31,7 +63,7 @@ Design goals:
   --shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
 
   /* Typographic scale */
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-sans: 'Hack', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   --lead-size: 1.05rem;
   /* Motion */
   --transition-fast: 120ms;
