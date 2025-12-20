@@ -200,6 +200,26 @@ a{color:var(--accent)}
   padding:0 1rem;
 }
 
+/* Responsive two-column utility used by About and similar pages
+   - Desktop: 2 columns (content + aside)
+   - Mobile/tablet: single column stacked layout
+*/
+.two-col{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:2rem;
+  align-items:start;
+}
+
+/* Ensure stacked layout on narrower screens */
+@media (max-width:899px){
+  .two-col{
+    grid-template-columns: 1fr;
+  }
+  /* make profile-aside full-width when stacked */
+  .profile-aside{ width:100%; }
+}
+
 /* Make the main content area flexible so footer sits at bottom on short pages */
 main[role="main"], main#main{ flex:1 0 auto }
 
